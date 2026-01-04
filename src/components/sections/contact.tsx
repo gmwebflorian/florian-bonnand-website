@@ -25,7 +25,7 @@ export function Contact() {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: '7fa03c7b-f000-4b91-94bc-4a450d41304d', // À remplacer par votre clé
+          access_key: '7fa03c7b-f000-4b91-94bc-4a450d41304d',
           name: formData.name,
           email: formData.email,
           brand: formData.brand,
@@ -37,6 +37,15 @@ export function Contact() {
       const result = await response.json();
 
       if (result.success) {
+        // 🎯 AJOUT : Envoyer l'événement à Google Tag Manager
+        if (typeof window !== 'undefined' && (window as any).dataLayer) {
+          (window as any).dataLayer.push({
+            event: 'form_submission',
+            form_name: 'contact_form',
+            form_brand: formData.brand,
+          });
+        }
+        
         setStatus('sent');
         setTimeout(() => {
           setStatus('idle');
@@ -62,8 +71,8 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 bg-white">
+      {/* Le reste du code reste identique */}
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="h-px w-12 bg-[hsl(var(--ocean-primary))]" />
@@ -83,7 +92,6 @@ export function Contact() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left: Contact Info */}
           <div className="space-y-8">
             <div className="bg-gradient-to-br from-[hsl(var(--ocean-deep))] to-[hsl(var(--ocean-primary))] rounded-2xl p-8 text-white shadow-xl">
               <div className="mb-6">
@@ -142,7 +150,6 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Right: Contact Form */}
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-[hsl(var(--sand))]">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
