@@ -74,7 +74,7 @@ export function Contact() {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-[hsl(var(--ocean-deep))] mb-6">
-            Prêt à reprendre la barre de vos ventes Amazon ?
+            Prêt à reprendre la barre de vos ventes Amazon en 2026?
           </h2>
 
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
