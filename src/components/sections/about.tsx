@@ -1,5 +1,5 @@
 'use client';
-
+import Image from 'next/image';
 import { Anchor3DIcon } from '@/components/icons/maritime-icons-3d';
 
 export function About() {
