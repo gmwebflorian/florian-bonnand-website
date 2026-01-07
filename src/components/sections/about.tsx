@@ -7,22 +7,27 @@ export function About() {
     <section id="about" className="py-24 bg-[hsl(var(--cream))]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left: Image placeholder */}
-          <div className="relative">
-            <div className="aspect-[3/4] bg-gradient-to-br from-[hsl(var(--ocean-primary))] to-[hsl(var(--ocean-light))] rounded-lg shadow-2xl relative overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                <Anchor3DIcon className="w-48 h-48" />
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
-                <p className="text-white font-semibold text-lg">Florian Bonnand</p>
-                <p className="text-white/80">Expert Amazon & Consultant Marketplace</p>
-              </div>
-            </div>
-
-            {/* Decorative rope element */}
-            <div className="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-32 border-l-4 border-dashed border-[hsl(var(--sand-dark))] opacity-30" />
-          </div>
-
+{/* Left: Image placeholder */}
+<div className="relative">
+  <div className="aspect-[6/5] bg-gradient-to-br from-[hsl(var(--ocean-primary))] to-[hsl(var(--ocean-light))] rounded-lg shadow-2xl relative overflow-hidden">
+    <div className="absolute inset-0">
+      <Image
+        src="/images/Expert Amazon Marketplace.webp"
+        alt="Florian Bonnand - Expert Amazon Marketplace"
+        fill
+        className="object-cover object-center"
+        priority
+        sizes="(max-width: 768px) 100vw, 50vw"
+      />
+    </div>
+    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
+      <p className="text-white font-semibold text-lg">Florian Bonnand</p>
+      <p className="text-white/80">Expert Amazon & Consultant Marketplace</p>
+    </div>
+  </div>
+  {/* Decorative rope element */}
+  <div className="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-32 border-l-4 border-dashed border-[hsl(var(--sand-dark))] opacity-30" />
+</div>
           {/* Right: Content */}
           <div>
             <div className="inline-flex items-center gap-3 mb-6">
