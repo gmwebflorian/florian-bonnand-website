@@ -66,73 +66,77 @@ export default async function BlogPage() {
     <>
       <Header />
       
-      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 py-20">
-        <div className="container mx-auto px-4">
+      <main className="relative min-h-screen py-20">
+        {/* ✅ FOND BLEU IDENTIQUE À LA PAGE D'ACCUEIL */}
+        <div className="absolute inset-0 ocean-gradient opacity-95" />
+        
+        {/* ✅ CONTENU PAR-DESSUS LE FOND */}
+        <div className="relative z-10 container mx-auto px-4">
           {/* ✅ SECTION INTRO SEO - Riche en mots-clés */}
           <div className="max-w-4xl mx-auto mb-16">
             <Link 
               href="/" 
-              className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors"
+              className="inline-flex items-center text-white hover:text-[#FFD700] mb-6 transition-colors"
             >
               ← Retour à l'accueil
             </Link>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Actualités Amazon Marketplace & Conseils Vendeurs
             </h1>
             
-            <div className="text-lg text-slate-700 space-y-4 leading-relaxed">
+            <div className="text-lg text-white/90 space-y-4 leading-relaxed">
               <p>
-                Bienvenue sur mon blog dédié aux <strong>actualités Amazon marketplace</strong>. 
+                Bienvenue sur mon blog dédié aux <strong className="text-white font-bold">actualités Amazon marketplace</strong>. 
                 En tant que consultant Amazon freelance, je partage ici les dernières 
-                <strong> mises à jour pour les vendeurs Amazon</strong>, mes analyses des 
+                <strong className="text-white font-bold"> mises à jour pour les vendeurs Amazon</strong>, mes analyses des 
                 nouveautés Amazon Ads, et mes conseils pratiques pour optimiser vos performances 
                 sur la plateforme.
               </p>
               
               <p>
-                Que vous cherchiez des <strong>actualités vendeurs Amazon</strong>, des stratégies 
+                Que vous cherchiez des <strong className="text-white font-bold">actualités vendeurs Amazon</strong>, des stratégies 
                 pour améliorer votre catalogue, ou des tips sur Amazon Ads, vous trouverez ici 
                 des articles basés sur mon expérience terrain et ma veille quotidienne du marketplace.
               </p>
             </div>
 
-            {/* ✅ SECTION CATÉGORIES - Bon pour le SEO */}
+            {/* ✅ SECTION CATÉGORIES - Effet vitré */}
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
-                <h3 className="font-semibold text-slate-900 mb-1">📰 Actualités</h3>
-                <p className="text-sm text-slate-600">News & mises à jour</p>
+              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
+                <h3 className="font-semibold text-white mb-1">📰 Actualités</h3>
+                <p className="text-sm text-white/80">News & mises à jour</p>
               </div>
-              <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
-                <h3 className="font-semibold text-slate-900 mb-1">💡 Conseils</h3>
-                <p className="text-sm text-slate-600">Tips & stratégies</p>
+              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
+                <h3 className="font-semibold text-white mb-1">💡 Conseils</h3>
+                <p className="text-sm text-white/80">Tips & stratégies</p>
               </div>
-              <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
-                <h3 className="font-semibold text-slate-900 mb-1">📊 Amazon Ads</h3>
-                <p className="text-sm text-slate-600">Optimisation pub</p>
+              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
+                <h3 className="font-semibold text-white mb-1">📊 Amazon Ads</h3>
+                <p className="text-sm text-white/80">Optimisation pub</p>
               </div>
-              <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
-                <h3 className="font-semibold text-slate-900 mb-1">🎯 Catalogue</h3>
-                <p className="text-sm text-slate-600">SEO & fiches produits</p>
+              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
+                <h3 className="font-semibold text-white mb-1">🎯 Catalogue</h3>
+                <p className="text-sm text-white/80">SEO & fiches produits</p>
               </div>
             </div>
           </div>
 
           {/* ✅ H2 OPTIMISÉ pour structure SEO */}
-          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
             Derniers articles du blog Amazon
           </h2>
 
           {posts.length === 0 ? (
-            <div className="bg-white rounded-lg shadow-lg p-12 text-center max-w-2xl mx-auto">
-              <p className="text-slate-600 text-lg mb-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 p-12 text-center max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg mb-6">
                 Aucun article pour le moment.
               </p>
               <a 
                 href="https://wp.florian-bonnand.eu/wp-admin" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-block bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FF8C00] text-[hsl(var(--ocean-deep))] font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
               >
                 Créer un article →
               </a>
