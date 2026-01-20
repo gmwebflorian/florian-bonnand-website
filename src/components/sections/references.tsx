@@ -109,7 +109,7 @@ export function References() {
                     <h4 className="text-sm uppercase tracking-wider text-[hsl(var(--ocean-primary))] font-semibold mb-4">
                       Résultats obtenus
                     </h4>
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       {study.results.map((result, idx) => (
                         <div key={idx} className="text-center">
                           <div className={`text-3xl font-bold mb-1 ${
