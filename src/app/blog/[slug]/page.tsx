@@ -7,7 +7,7 @@ import { Footer } from '@/components/layout/footer';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
-// ✅ REQUÊTE POUR RÉCUPÉRER UN ARTICLE
+// ✅ REQUÊTE GRAPHQL BASIQUE (sans SEO)
 const GET_POST_BY_SLUG = gql`
   query GetPostBySlug($slug: ID!) {
     post(id: $slug, idType: SLUG) {
@@ -27,10 +27,6 @@ const GET_POST_BY_SLUG = gql`
           sourceUrl
           altText
         }
-      }
-      seo {
-        title
-        metaDesc
       }
     }
   }
@@ -54,10 +50,6 @@ interface Post {
       altText: string;
     };
   };
-  seo?: {
-    title?: string;
-    metaDesc?: string;
-  };
 }
 
 interface Props {
@@ -66,7 +58,67 @@ interface Props {
   };
 }
 
-// ✅ GÉNÉRATION DES METADATA SEO DYNAMIQUES
+// ✅ FONCTION POUR RÉCUPÉRER LES META RANKMATH VIA REST API
+async function getRankMathSEO(url: string) {
+  try {
+    const response = await fetch(
+      `https://wp.florian-bonnand.eu/wp-json/rankmath/v1/getHead?url=${encodeURIComponent(url)}`,
+      { next: { revalidate: 60 } }
+    );
+
+    if (!response.ok) {
+      console.error('RankMath API error:', response.status);
+      return null;
+    }
+
+    const data = await response.json();
+    
+    if (!data.success || !data.head) {
+      return null;
+    }
+
+    // Parser le HTML pour extraire les balises meta
+    const head = data.head;
+    
+    // Extraire le title
+    const titleMatch = head.match(/<title>(.*?)<\/title>/);
+    const title = titleMatch ? titleMatch[1] : null;
+
+    // Extraire la meta description
+    const descMatch = head.match(/<meta name="description" content="(.*?)"/);
+    const description = descMatch ? descMatch[1] : null;
+
+    // Extraire og:title
+    const ogTitleMatch = head.match(/<meta property="og:title" content="(.*?)"/);
+    const ogTitle = ogTitleMatch ? ogTitleMatch[1] : null;
+
+    // Extraire og:description
+    const ogDescMatch = head.match(/<meta property="og:description" content="(.*?)"/);
+    const ogDescription = ogDescMatch ? ogDescMatch[1] : null;
+
+    // Extraire og:image
+    const ogImageMatch = head.match(/<meta property="og:image" content="(.*?)"/);
+    const ogImage = ogImageMatch ? ogImageMatch[1] : null;
+
+    // Extraire canonical
+    const canonicalMatch = head.match(/<link rel="canonical" href="(.*?)"/);
+    const canonical = canonicalMatch ? canonicalMatch[1] : null;
+
+    return {
+      title,
+      description,
+      ogTitle,
+      ogDescription,
+      ogImage,
+      canonical,
+    };
+  } catch (error) {
+    console.error('Error fetching RankMath SEO:', error);
+    return null;
+  }
+}
+
+// ✅ GÉNÉRATION DES METADATA SEO AVEC RANKMATH REST API
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const client = createApolloClient();
   
@@ -84,17 +136,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       };
     }
 
+    // Récupérer les données SEO depuis RankMath REST API
+    const postUrl = `https://florian-bonnand.eu/blog/${post.slug}`;
+    const seoData = await getRankMathSEO(postUrl);
+
     return {
-      title: post.seo?.title || post.title,
-      description: post.seo?.metaDesc || post.excerpt.replace(/<[^>]*>/g, '').substring(0, 160),
+      title: seoData?.title || post.title,
+      description: seoData?.description || post.excerpt.replace(/<[^>]*>/g, '').substring(0, 160),
       openGraph: {
-        title: post.seo?.title || post.title,
-        description: post.seo?.metaDesc || post.excerpt.replace(/<[^>]*>/g, '').substring(0, 160),
-        images: post.featuredImage ? [post.featuredImage.node.sourceUrl] : [],
+        title: seoData?.ogTitle || seoData?.title || post.title,
+        description: seoData?.ogDescription || seoData?.description || post.excerpt.replace(/<[^>]*>/g, '').substring(0, 160),
+        images: seoData?.ogImage || post.featuredImage?.node.sourceUrl ? [seoData?.ogImage || post.featuredImage?.node.sourceUrl] : [],
         type: 'article',
+        locale: 'fr_FR',
+        publishedTime: post.date,
+        authors: [post.author.node.name],
+      },
+      alternates: {
+        canonical: seoData?.canonical || postUrl,
       },
     };
   } catch (error) {
+    console.error('Error generating metadata:', error);
     return {
       title: 'Article non trouvé',
     };
