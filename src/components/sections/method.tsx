@@ -138,10 +138,11 @@ export function Method() {
         {/* Mobile Carousel - Visible only on mobile */}
         <div className="md:hidden">
           <div
-            className="relative overflow-hidden"
+            className="relative overflow-hidden bg-red-500/10"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
+            style={{ minHeight: '400px' }}
           >
             <div
               className="flex transition-transform duration-500 ease-out pointer-events-none"
