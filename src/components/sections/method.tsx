@@ -45,18 +45,25 @@ export function Method() {
 
   // Swipe handlers
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
+    const x = e.targetTouches[0].clientX;
+    console.log('Touch Start:', x);
+    setTouchStart(x);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    const x = e.targetTouches[0].clientX;
+    console.log('Touch Move:', x);
+    setTouchEnd(x);
   };
 
   const handleTouchEnd = () => {
+    console.log('Touch End - Start:', touchStart, 'End:', touchEnd, 'Distance:', touchStart - touchEnd);
     if (touchStart - touchEnd > 75) {
+      console.log('Swiping LEFT (next)');
       nextSlide();
     }
     if (touchStart - touchEnd < -75) {
+      console.log('Swiping RIGHT (prev)');
       prevSlide();
     }
   };
