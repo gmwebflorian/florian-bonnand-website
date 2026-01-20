@@ -45,25 +45,18 @@ export function Method() {
 
   // Swipe handlers
   const handleTouchStart = (e: React.TouchEvent) => {
-    const x = e.targetTouches[0].clientX;
-    console.log('Touch Start:', x);
-    setTouchStart(x);
+    setTouchStart(e.targetTouches[0].clientX);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    const x = e.targetTouches[0].clientX;
-    console.log('Touch Move:', x);
-    setTouchEnd(x);
+    setTouchEnd(e.targetTouches[0].clientX);
   };
 
   const handleTouchEnd = () => {
-    console.log('Touch End - Start:', touchStart, 'End:', touchEnd, 'Distance:', touchStart - touchEnd);
     if (touchStart - touchEnd > 75) {
-      console.log('Swiping LEFT (next)');
       nextSlide();
     }
     if (touchStart - touchEnd < -75) {
-      console.log('Swiping RIGHT (prev)');
       prevSlide();
     }
   };
@@ -138,12 +131,7 @@ export function Method() {
         {/* Mobile Carousel - Visible only on mobile */}
         <div className="md:hidden">
           <div
-            className="relative"
-            style={{
-              minHeight: '500px',
-              backgroundColor: 'rgba(255, 0, 0, 0.2)',
-              touchAction: 'pan-y'
-            }}
+            className="relative overflow-hidden"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
