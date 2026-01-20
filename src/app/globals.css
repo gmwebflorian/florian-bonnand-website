@@ -166,3 +166,18 @@
     padding-bottom: 0;
   }
 }
+
+/* Mobile Fix with inline styles override */
+@media (min-width: 768px) {
+  .ref-results-mobile-fix {
+    flex-direction: row !important;
+    gap: 1rem !important;
+  }
+
+  .ref-result-mobile-fix {
+    flex: 1 !important;
+    width: auto !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}

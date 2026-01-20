@@ -109,9 +109,9 @@ export function References() {
                     <h4 className="text-sm uppercase tracking-wider text-[hsl(var(--ocean-primary))] font-semibold mb-4">
                       Résultats obtenus
                     </h4>
-                    <div className="reference-results-container">
+                    <div className="ref-results-mobile-fix" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                       {study.results.map((result, idx) => (
-                        <div key={idx} className="reference-result-item text-center px-4 py-3">
+                        <div key={idx} className="ref-result-mobile-fix text-center" style={{ width: '100%', padding: '0.75rem 1rem' }}>
                           <div className={`text-3xl font-bold mb-2 ${
                             result.trend === 'up' ? 'text-green-600' : 'text-blue-600'
                           }`}>
