@@ -137,15 +137,13 @@ export function Method() {
 
         {/* Mobile Carousel - Visible only on mobile */}
         <div className="md:hidden">
-          <div
-            className="relative overflow-hidden"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
+          <div className="relative overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               {steps.map((step, index) => (
                 <div key={index} className="w-full flex-shrink-0 px-2">
