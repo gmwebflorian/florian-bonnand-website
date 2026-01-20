@@ -169,18 +169,18 @@ export const revalidate = 60;
 export default async function BlogPostPage({ params }: Props) {
   const client = createApolloClient();
 
-  let post: Post | null = null;
+let post: Post | null = null;
 
-  try {
-    const { data } = await client.query<{ post: Post }>({
-      query: GET_POST_BY_SLUG,
-      variables: { slug: params.slug },
-    });
+try {
+  const { data } = await client.query<{ post: Post }>({
+    query: GET_POST_BY_SLUG,
+    variables: { slug: params.slug },
+  });
 
-    post = data?.post;
-  } catch (error) {
-    console.error('Error fetching post:', error);
-  }
+  post = data?.post || null;
+} catch (error) {
+  console.error('Error fetching post:', error);
+}
 
   if (!post) {
     notFound();
