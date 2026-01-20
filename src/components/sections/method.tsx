@@ -138,12 +138,18 @@ export function Method() {
         {/* Mobile Carousel - Visible only on mobile */}
         <div className="md:hidden">
           <div className="relative overflow-hidden">
+            {/* Transparent overlay to capture swipes */}
             <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              className="absolute inset-0 z-20"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
+              style={{ touchAction: 'pan-y' }}
+            />
+
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
               {steps.map((step, index) => (
                 <div key={index} className="w-full flex-shrink-0 px-2">
@@ -155,7 +161,7 @@ export function Method() {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/80 p-2 rounded-full shadow-md transition-all z-10"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/80 p-2 rounded-full shadow-md transition-all z-30"
               aria-label="Étape précédente"
             >
               <svg className="w-5 h-5 text-[hsl(var(--ocean-deep))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -164,7 +170,7 @@ export function Method() {
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/80 p-2 rounded-full shadow-md transition-all z-10"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/80 p-2 rounded-full shadow-md transition-all z-30"
               aria-label="Étape suivante"
             >
               <svg className="w-5 h-5 text-[hsl(var(--ocean-deep))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
