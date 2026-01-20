@@ -141,3 +141,28 @@
     transform: rotate(15deg);
   }
 }
+
+/* Reference Results Responsive Layout */
+.reference-results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.reference-result-item {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .reference-results-container {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .reference-result-item {
+    flex: 1;
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
