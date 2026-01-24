@@ -21,9 +21,9 @@ const navItems = [
   { label: 'À propos', href: '#about' },
   { label: 'Expertises', href: '#expertises' },
   { label: 'Méthode', href: '#method' },
-  { label: 'Références', href: 'https://florian-bonnand.eu#references' },
-  { label: 'Blog', href: '/blog' },  // ← Ajouté
-  { label: 'Contact', href: 'https://florian-bonnand.eu/#contact' },
+  { label: 'Références', href: '#references' },
+  { label: 'Blog', href: '/blog' },  
+  { label: 'Contact', href: '#contact' },
 ];
 
   const scrollToSection = (href: string) => {
