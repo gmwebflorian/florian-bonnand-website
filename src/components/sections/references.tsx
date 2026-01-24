@@ -1,5 +1,5 @@
 'use client';
-
+import BrandCarousel from '@/components/BrandCarousel';
 const caseStudies = [
   {
     category: 'Aides culinaires',
@@ -145,7 +145,8 @@ export function References() {
             </div>
           ))}
         </div>
-
+{/* Nouveau carrousel de marques */}
+<BrandCarousel />
         <div className="mt-16 text-center bg-white rounded-xl p-8 shadow-lg">
           <p className="text-lg text-gray-700 mb-2">
             Votre marque mérite aussi des résultats exceptionnels
