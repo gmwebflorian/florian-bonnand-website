@@ -124,7 +124,7 @@ const BrandCarousel = () => {
   };
 
   return (
-    <div className="w-full py-12">
+    <div className="w-full py-12 pb-6 md:pb-12">
       <div className="container mx-auto px-4">
         {/* Titre */}
         <h3 className="text-2xl md:text-3xl font-bold text-center text-[#1e3a8a] mb-10">
