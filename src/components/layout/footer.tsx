@@ -1,8 +1,25 @@
 'use client';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { CompassIcon, WaveIcon } from '@/components/icons/maritime-icons';
 
 export function Footer() {
+  const pathname = usePathname();
+
+  // Fonction pour gérer le scroll smooth sur la homepage
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Si on est sur la homepage ET que c'est un lien avec ancre (#)
+    if (pathname === '/' && href.startsWith('#')) {
+      e.preventDefault();
+      
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <footer className="bg-[hsl(var(--ocean-deep))] text-white">
       {/* Waves decoration */}
@@ -38,13 +55,14 @@ export function Footer() {
                 { label: 'Références', href: '#references' },
                 { label: 'Contact', href: '#contact' },
               ].map((item) => (
-                <button
+                <Link
                   key={item.href}
-                  onClick={() => document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })}
+                  href={`/${item.href}`}
+                  onClick={(e) => handleSmoothScroll(e, item.href)}
                   className="block text-white/70 hover:text-[hsl(var(--gold))] transition-colors"
                 >
                   {item.label}
-                </button>
+                </Link>
               ))}
             </nav>
           </div>
@@ -57,20 +75,21 @@ export function Footer() {
                 <svg className="w-5 h-5 text-[hsl(var(--gold))] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:contact@florianbonnand.fr" className="text-white/80 hover:text-white transition-colors">
+                <a href="mailto:contact@florian-bonnand.eu" className="text-white/80 hover:text-white transition-colors">
                   contact@florian-bonnand.eu
                 </a>
               </div>
               <div className="pt-4">
-                <button
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                <Link
+                  href="/#contact"
+                  onClick={(e) => handleSmoothScroll(e, '#contact')}
                   className="inline-flex items-center gap-2 bg-[hsl(var(--gold))] hover:bg-[hsl(var(--copper))] text-[hsl(var(--ocean-deep))] font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
                 >
                   Demander un diagnostic
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
