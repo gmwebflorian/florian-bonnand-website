@@ -17,24 +17,14 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-const navItems = [
-  { label: 'À propos', href: '#about' },
-  { label: 'Expertises', href: '#expertises' },
-  { label: 'Méthode', href: '#method' },
-  { label: 'Références', href: '#references' },
-  { label: 'Blog', href: '/blog' },  
-  { label: 'Contact', href: '#contact' },
-];
-
-  const scrollToSection = (href: string) => {
-    setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    } else if (href === '#') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
+  const navItems = [
+    { label: 'À propos', href: '#about' },
+    { label: 'Expertises', href: '#expertises' },
+    { label: 'Méthode', href: '#method' },
+    { label: 'Références', href: '#references' },
+    { label: 'Blog', href: '/blog' },  
+    { label: 'Contact', href: '#contact' },
+  ];
 
   if (!isMounted) {
     return (
@@ -57,10 +47,7 @@ const navItems = [
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <button
-            onClick={() => scrollToSection('#')}
-            className="flex items-center gap-3 group"
-          >
+          <Link href="/" className="flex items-center gap-3 group">
             <CompassIcon
               className={`w-10 h-10 transition-colors ${
                 isScrolled || isMobileMenuOpen ? 'text-[hsl(var(--ocean-primary))]' : 'text-white'
@@ -82,46 +69,28 @@ const navItems = [
                 Consultant Amazon
               </div>
             </div>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
-<nav className="hidden md:flex gap-8">
-{navItems.map((item) => {
-  if (item.href === '/blog') {
-    return (
-      <Link
-        key={item.href}
-        href={item.href}
-        className={`font-medium transition-colors ${
-          isScrolled 
-            ? 'text-gray-700 hover:text-[hsl(var(--ocean-primary))]' 
-            : 'text-white hover:text-gray-200'
-        }`}
-      >
-        {item.label}
-      </Link>
-    );
-  }
-  
-  return (
-    <button
-      key={item.href}
-      onClick={() => scrollToSection(item.href)}
-      className={`font-medium transition-colors ${
-        isScrolled 
-          ? 'text-gray-700 hover:text-[hsl(var(--ocean-primary))]' 
-          : 'text-white hover:text-gray-200'
-      }`}
-    >
-      {item.label}
-    </button>
-  );
-})}
+          <nav className="hidden md:flex gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href === '/blog' ? item.href : `/${item.href}`}
+                className={`font-medium transition-colors ${
+                  isScrolled 
+                    ? 'text-gray-700 hover:text-[hsl(var(--ocean-primary))]' 
+                    : 'text-white hover:text-gray-200'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
           {/* CTA Button */}
-          <button
-            onClick={() => scrollToSection('#contact')}
+          <Link
+            href="/#contact"
             className={`hidden md:block px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 ${
               isScrolled
                 ? 'bg-[hsl(var(--ocean-primary))] text-white hover:bg-[hsl(var(--ocean-deep))]'
@@ -129,7 +98,7 @@ const navItems = [
             }`}
           >
             Prendre contact
-          </button>
+          </Link>
 
           {/* Mobile menu button */}
           <button
@@ -155,37 +124,23 @@ const navItems = [
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <nav className="flex flex-col gap-4">
-{navItems.map((item) => {
-  // Si c'est le lien Blog, on utilise Link
-  if (item.href === '/blog') {
-    return (
-      <Link
-        key={item.href}
-        href={item.href}
-        className="text-left font-medium text-gray-700 hover:text-[hsl(var(--ocean-primary))] transition-colors"
-      >
-        {item.label}
-      </Link>
-    );
-  }
-  
-  // Sinon, c'est un bouton avec scrollToSection
-  return (
-    <button
-      key={item.href}
-      onClick={() => scrollToSection(item.href)}
-      className="text-left font-medium text-gray-700 hover:text-[hsl(var(--ocean-primary))] transition-colors"
-    >
-      {item.label}
-    </button>
-  );
-})}
-              <button
-                onClick={() => scrollToSection('#contact')}
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href === '/blog' ? item.href : `/${item.href}`}
+                  className="text-left font-medium text-gray-700 hover:text-[hsl(var(--ocean-primary))] transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                href="/#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-2 px-6 py-2.5 rounded-lg font-semibold bg-[hsl(var(--ocean-primary))] text-white hover:bg-[hsl(var(--ocean-deep))] transition-colors"
               >
                 Prendre contact
-              </button>
+              </Link>
             </nav>
           </div>
         )}
