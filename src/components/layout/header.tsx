@@ -18,10 +18,10 @@ export function Header() {
   }, []);
 
 const navItems = [
-  { label: 'À propos', href: 'https://florian-bonnand.eu/#about' },
-  { label: 'Expertises', href: 'https://florian-bonnand.eu/#expertises' },
-  { label: 'Méthode', href: 'https://florian-bonnand.eu/#method' },
-  { label: 'Références', href: 'https://florian-bonnand.eu/#references' },
+  { label: 'À propos', href: '#about' },
+  { label: 'Expertises', href: '#expertises' },
+  { label: 'Méthode', href: '#method' },
+  { label: 'Références', href: 'https://florian-bonnand.eu#references' },
   { label: 'Blog', href: '/blog' },  // ← Ajouté
   { label: 'Contact', href: 'https://florian-bonnand.eu/#contact' },
 ];
