@@ -241,27 +241,18 @@ export function Hero() {
             />
           </div>
         </div>
-<p class="hero-eyebrow">
-  Tenir le cap sur Amazon, grâce à une expertise née du terrain
-</p>
 
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 md:mb-6 maritime-text-shadow animate-fade-in">
-            Consultant Amazon freelance
+          Tenir le cap sur Amazon,
           <br />
           <span className="text-[hsl(var(--gold))] animate-shimmer bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#FFD700] bg-clip-text text-transparent bg-[length:200%_auto]">
-            pour marques et vendeurs professionnels
+            grâce à une expertise née du terrain
           </span>
         </h1>
 
         <p className="text-base sm:text-lg md:text-2xl text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
-<p>
-  Ancien vendeur Amazon et consultant marketplace freelance, 
-  j’accompagne les marques françaises dans leur développement sur Amazon 
-  avec une approche pragmatique, orientée rentabilité et résultats concrets. 
-  SEO Amazon, Amazon Ads, lancement de produits et structuration long terme 
-  sont au cœur de mon accompagnement.
-</p>
-
+          Consultant Marketplace & E-commerce freelance, j'accompagne les marques françaises vers le succès sur Amazon
+          avec une vision pragmatique d'ancien vendeur.
         </p>
 
         <div className="flex justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
