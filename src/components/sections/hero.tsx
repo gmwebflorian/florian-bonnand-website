@@ -252,16 +252,15 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="text-base sm:text-lg md:text-2xl text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
-<p>
+<p className="text-sm sm:text-base md:text-lg text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
   Ancien vendeur Amazon et consultant marketplace freelance, 
-  j’accompagne les marques françaises dans leur développement sur Amazon 
-  avec une approche pragmatique, orientée rentabilité et résultats concrets. 
+  j'accompagne les marques françaises dans leur développement sur Amazon 
+  avec une approche pragmatique, orientée rentabilité et résultats concrets.
+  <br />
+  <br />
   SEO Amazon, Amazon Ads, lancement de produits et structuration long terme 
   sont au cœur de mon accompagnement.
 </p>
-
-        </p>
 
         <div className="flex justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <Button
