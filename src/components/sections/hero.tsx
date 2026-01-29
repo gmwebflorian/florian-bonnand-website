@@ -244,13 +244,13 @@ export function Hero() {
 <p className="text-sm sm:text-base md:text-lg italic text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
   Tenir le cap sur Amazon, grâce à une expertise née du terrain
 </p>
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 md:mb-6 maritime-text-shadow animate-fade-in">
-            Consultant Amazon freelance
-          <br />
-          <span className="text-[hsl(var(--gold))] animate-shimmer bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#FFD700] bg-clip-text text-transparent bg-[length:200%_auto]">
-            pour marques et vendeurs professionnels
-          </span>
-        </h1>
+<h1 className="text-2xl sm:text-5xl md:text-6xl font-bold text-white mb-6 md:mb-6 max-w-5xl mx-auto maritime-text-shadow animate-fade-in">
+  Consultant Amazon freelance
+  <br />
+  <span className="text-[hsl(var(--gold))] animate-shimmer bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#FFD700] bg-clip-text text-transparent bg-[length:200%_auto]">
+    pour marques et vendeurs professionnels
+  </span>
+</h1>
 
 <p className="text-sm sm:text-base md:text-lg text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
   Ancien vendeur Amazon et consultant marketplace freelance, 
