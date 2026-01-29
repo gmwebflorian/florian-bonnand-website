@@ -241,10 +241,9 @@ export function Hero() {
             />
           </div>
         </div>
-<p class="hero-eyebrow">
+<p>
   Tenir le cap sur Amazon, grâce à une expertise née du terrain
 </p>
-
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 md:mb-6 maritime-text-shadow animate-fade-in">
             Consultant Amazon freelance
           <br />
