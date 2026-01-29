@@ -128,7 +128,7 @@ const BrandCarousel = () => {
       <div className="container mx-auto px-4">
         {/* Titre */}
         <h3 className="text-2xl md:text-3xl font-bold text-center text-[#1e3a8a] mb-10">
-          Les marques qui ont embarqué avec moi
+          Les marques avec qu ij'ai navigué
         </h3>
 
         {/* Container du carrousel */}
