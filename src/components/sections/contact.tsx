@@ -7,6 +7,7 @@ export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    tel: '',        // ✅ On garde "tel" partout pour être cohérent
     brand: '',
     message: '',
   });
@@ -28,6 +29,7 @@ export function Contact() {
           access_key: '7fa03c7b-f000-4b91-94bc-4a450d41304d',
           name: formData.name,
           email: formData.email,
+          tel: formData.tel,           // ✅ Corrigé : "tel" au lieu de "telephone"
           brand: formData.brand,
           message: formData.message,
           subject: `Nouveau contact de ${formData.name} - ${formData.brand}`,
@@ -37,7 +39,6 @@ export function Contact() {
       const result = await response.json();
 
       if (result.success) {
-        // 🎯 AJOUT : Envoyer l'événement à Google Tag Manager
         if (typeof window !== 'undefined' && (window as any).dataLayer) {
           (window as any).dataLayer.push({
             event: 'form_submission',
@@ -45,11 +46,11 @@ export function Contact() {
             form_brand: formData.brand,
           });
         }
-        
+
         setStatus('sent');
         setTimeout(() => {
           setStatus('idle');
-          setFormData({ name: '', email: '', brand: '', message: '' });
+          setFormData({ name: '', email: '', tel: '', brand: '', message: '' }); // ✅ "tel" ajouté au reset
         }, 3000);
       } else {
         setStatus('error');
@@ -71,7 +72,6 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 bg-white">
-      {/* Le reste du code reste identique */}
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
@@ -120,11 +120,9 @@ export function Contact() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                <svg
-              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-6 h-6 text-[hsl(var(--gold))] flex-shrink-0 mt-1">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
-              />
-            </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-6 h-6 text-[hsl(var(--gold))] flex-shrink-0 mt-1">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                  </svg>
                   <div>
                     <p className="text-sm text-white/70 mb-1">Téléphone</p>
                     <p className="text-white">06.34.87.70.67</p>
@@ -181,6 +179,23 @@ export function Contact() {
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[hsl(var(--ocean-primary))] focus:ring-2 focus:ring-[hsl(var(--ocean-primary))]/20 outline-none transition-all"
                   placeholder="jean@marque.fr"
+                />
+              </div>
+
+              {/* ✅ NOUVEAU CHAMP TÉLÉPHONE */}
+              <div>
+                <label htmlFor="tel" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Téléphone *
+                </label>
+                <input
+                  type="tel"
+                  id="tel"
+                  name="tel"
+                  required
+                  value={formData.tel}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[hsl(var(--ocean-primary))] focus:ring-2 focus:ring-[hsl(var(--ocean-primary))]/20 outline-none transition-all"
+                  placeholder="06 00 00 00 00"
                 />
               </div>
 
