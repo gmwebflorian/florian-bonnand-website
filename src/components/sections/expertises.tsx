@@ -35,9 +35,9 @@ const expertises = [
   {
     iconPath: '/images/icons/reglementaire.png',
     title: `Accompagnement Réglementaire`,
-    subtitle: `Conformité RGPD, TVA, DEEE & Fiscalité`,
-    description: `Naviguez sereinement dans la complexité réglementaire d'Amazon. Je vous accompagne sur tous les aspects de conformité : mise en conformité RGPD et protection des données clients, gestion de la TVA intracommunautaire et déclarations fiscales, enregistrement DEEE (équipements électriques et électroniques), respect des normes CE et obligations légales par catégorie de produits. Un accompagnement réglementaire rigoureux vous protège des sanctions Amazon (suspension de compte, blocage de ventes) et sécurise votre activité marketplace sur le long terme.`,
-    keywords: `conformité Amazon, RGPD marketplace, TVA Amazon, DEEE, réglementation e-commerce`,
+    subtitle: `Conformité RSGP, TVA, DEEE & Fiscalité`,
+    description: `Naviguez sereinement dans la complexité réglementaire d'Amazon. Je vous accompagne sur tous les aspects de conformité : mise en conformité RSGP et protection des données clients, gestion de la TVA intracommunautaire et déclarations fiscales, enregistrement DEEE (équipements électriques et électroniques), respect des normes CE et obligations légales par catégorie de produits. Un accompagnement réglementaire rigoureux vous protège des sanctions Amazon (suspension de compte, blocage de ventes) et sécurise votre activité marketplace sur le long terme.`,
+    keywords: `conformité Amazon, RSGP marketplace, TVA Amazon, DEEE, réglementation e-commerce`,
   },
   {
     iconPath: '/images/icons/gestion-compte.png',
