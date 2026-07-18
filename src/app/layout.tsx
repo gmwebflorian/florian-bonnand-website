@@ -22,11 +22,27 @@ export const metadata: Metadata = {
     "SEO Amazon",
   ],
   authors: [{ name: "Florian Bonnand" }],
+  alternates: {
+    canonical: "https://florian-bonnand.eu",
+  },
   openGraph: {
     title: "Florian Bonnand - Consultant Amazon Freelance",
     description: "Accompagnement expert des marques sur Amazon. Vision terrain, résultats concrets, stratégie sur-mesure.",
     type: "website",
     locale: "fr_FR",
+    url: "https://florian-bonnand.eu",
+    images: [{
+      url: "/images/Expert Amazon Marketplace.webp",
+      width: 1200,
+      height: 630,
+      alt: "Florian Bonnand - Expert Amazon Marketplace"
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Florian Bonnand - Consultant Amazon Freelance",
+    description: "Expert Amazon freelance, accompagnement marques françaises sur Amazon Marketplace",
+    images: ["/images/Expert Amazon Marketplace.webp"],
   },
   robots: {
     index: true,

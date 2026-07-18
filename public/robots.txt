@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://florian-bonnand.eu/sitemap.xml
+
+# Optimisation crawl
+Crawl-delay: 1
