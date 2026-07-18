@@ -83,6 +83,11 @@ const BrandCarousel = () => {
       logo: "/images/brands/addax.webp",
       logoBlue: "/images/brands/addax-blue.webp"
     },
+    {
+      name: "Pomeol",
+      logo: "/images/brands/pomeol.webp",
+      logoBlue: "/images/brands/pomeol-blue.webp"
+    },
   ];
 
   // On duplique les logos pour un défilement infini
