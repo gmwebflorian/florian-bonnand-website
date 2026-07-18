@@ -223,10 +223,40 @@ export default async function BlogPostPage({ params }: Props) {
           <article className="max-w-4xl mx-auto">
             <Link
               href="/blog"
-              className="inline-flex items-center text-white hover:text-[#FFD700] mb-8 transition-colors"
+              className="inline-flex items-center text-white hover:text-[#FFD700] mb-4 transition-colors"
             >
               ← Retour aux articles
             </Link>
+
+            {/* Breadcrumbs with structured data */}
+            <nav aria-label="Breadcrumb" className="mb-8">
+              <ol
+                itemScope
+                itemType="https://schema.org/BreadcrumbList"
+                className="flex items-center space-x-2 text-sm text-white/80"
+              >
+                <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                  <Link href="/" itemProp="item" className="hover:text-[#FFD700] transition-colors">
+                    <span itemProp="name">Accueil</span>
+                  </Link>
+                  <meta itemProp="position" content="1" />
+                </li>
+                <span className="text-white/50">/</span>
+                <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                  <Link href="/blog" itemProp="item" className="hover:text-[#FFD700] transition-colors">
+                    <span itemProp="name">Blog</span>
+                  </Link>
+                  <meta itemProp="position" content="2" />
+                </li>
+                <span className="text-white/50">/</span>
+                <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                  <span itemProp="name" className="text-white font-medium truncate max-w-md">
+                    {post.title}
+                  </span>
+                  <meta itemProp="position" content="3" />
+                </li>
+              </ol>
+            </nav>
 
             {post.featuredImage && (
               <div className="relative w-full h-[400px] rounded-lg overflow-hidden mb-8 shadow-2xl">
