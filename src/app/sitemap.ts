@@ -50,6 +50,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       query: GET_ALL_POSTS,
     })
 
+    if (!data || !data.posts || !data.posts.nodes) {
+      return staticPages
+    }
+
     const blogPosts: MetadataRoute.Sitemap = data.posts.nodes.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.modified),
