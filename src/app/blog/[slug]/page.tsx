@@ -2,6 +2,7 @@ import createApolloClient from '@/lib/apollo-client';
 import { gql } from '@apollo/client';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { notFound } from 'next/navigation';
@@ -179,8 +180,40 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  // Structured Data pour l'article
+  const articleStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "image": post.featuredImage?.node.sourceUrl,
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "author": {
+      "@type": "Person",
+      "name": post.author.node.name
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Florian Bonnand Consulting",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://florian-bonnand.eu/images/Expert Amazon Marketplace.webp"
+      }
+    },
+    "description": post.excerpt,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://florian-bonnand.eu/blog/${post.slug}`
+    }
+  };
+
   return (
     <>
+      <Script
+        id="structured-data-article"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
       <Header />
 
       <main className="relative min-h-screen py-20">

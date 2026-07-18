@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { WaveIcon } from '@/components/icons/maritime-icons';
 import { Button } from '@/components/ui/button';
 import { useEffect, useRef } from 'react';
@@ -233,10 +234,13 @@ export function Hero() {
       <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-6 text-center -mt-16 md:mt-0">
         <div className="mb-4 md:mb-8 inline-block">
           <div className="relative w-32 h-32">
-            <img 
-              src="/images/ship-wheel.webp" 
-              alt="Barre de bateau" 
-              className="w-full h-full object-contain drop-shadow-2xl animate-[swing_3s_ease-in-out_infinite]"
+            <Image
+              src="/images/ship-wheel.webp"
+              alt="Barre de bateau"
+              width={128}
+              height={128}
+              priority
+              className="drop-shadow-2xl animate-[swing_3s_ease-in-out_infinite]"
               style={{ transformOrigin: 'center center' }}
             />
           </div>
