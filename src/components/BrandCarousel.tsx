@@ -73,10 +73,15 @@ const BrandCarousel = () => {
       logo: "/images/brands/fileane.webp",
       logoBlue: "/images/brands/fileane-blue.webp"
     },
-    { 
-      name: "ISN Santé", 
+    {
+      name: "ISN Santé",
       logo: "/images/brands/isn.webp",
       logoBlue: "/images/brands/isn-blue.webp"
+    },
+    {
+      name: "Addax",
+      logo: "/images/brands/addax.webp",
+      logoBlue: "/images/brands/addax-blue.webp"
     },
   ];
 
