@@ -104,20 +104,20 @@ export default async function BlogPage() {
             {/* ✅ SECTION CATÉGORIES - Effet vitré */}
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
-                <h3 className="font-semibold text-white mb-1">📰 Actualités</h3>
-                <p className="text-sm text-white/80">News & mises à jour</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
-                <h3 className="font-semibold text-white mb-1">💡 Conseils</h3>
-                <p className="text-sm text-white/80">Tips & stratégies</p>
+                <h3 className="font-semibold text-white mb-1">🎯 Catalogue</h3>
+                <p className="text-sm text-white/80">SEO & fiches produits</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
                 <h3 className="font-semibold text-white mb-1">📊 Amazon Ads</h3>
-                <p className="text-sm text-white/80">Optimisation pub</p>
+                <p className="text-sm text-white/80">Stratégies publicitaires</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
-                <h3 className="font-semibold text-white mb-1">🎯 Catalogue</h3>
-                <p className="text-sm text-white/80">SEO & fiches produits</p>
+                <h3 className="font-semibold text-white mb-1">✅ Conformité</h3>
+                <p className="text-sm text-white/80">Règles & réglementations</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
+                <h3 className="font-semibold text-white mb-1">📦 Logistique FBA</h3>
+                <p className="text-sm text-white/80">Gestion stocks & expéditions</p>
               </div>
             </div>
           </div>
