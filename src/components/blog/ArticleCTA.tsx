@@ -3,17 +3,17 @@ import Image from 'next/image';
 
 export function ArticleCTA() {
   return (
-    <div className="my-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 md:p-10 shadow-2xl border border-blue-500/30 relative pt-16 md:pt-8">
-      {/* Photo de profil en pastille */}
-      <div className="absolute -top-12 left-8">
+    <div className="my-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 md:p-10 shadow-2xl border border-blue-500/30 relative">
+      {/* Photo de profil en pastille - positionnée à droite */}
+      <div className="hidden md:block absolute top-1/2 -translate-y-1/2 right-12">
         <div className="relative">
-          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] p-1 shadow-2xl">
+          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] p-1.5 shadow-2xl">
             <div className="w-full h-full rounded-full overflow-hidden bg-white">
               <Image
                 src="/images/Expert Amazon Marketplace.webp"
                 alt="Florian Bonnand - Consultant Amazon"
-                width={96}
-                height={96}
+                width={128}
+                height={128}
                 className="w-full h-full object-cover"
               />
             </div>
