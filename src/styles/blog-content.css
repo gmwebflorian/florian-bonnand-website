@@ -204,15 +204,23 @@
   font-weight: 700;
 }
 
-/* Icône avant le bloc (optionnel) */
+/* Label avec icône avant le bloc */
 .blog-content .expert-note::before {
-  content: "💡 ";
-  font-size: 1.5rem;
-  margin-right: 0.5rem;
+  content: "💡 Astuce Amazon";
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #92400e;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.025em;
 }
 
 .blog-content .personal-experience::before {
-  content: "📖 ";
-  font-size: 1.5rem;
-  margin-right: 0.5rem;
+  content: "📖 Vécu de consultant";
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.025em;
 }
