@@ -103,19 +103,19 @@ export default async function BlogPage() {
 
             {/* ✅ SECTION CATÉGORIES - Effet vitré */}
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Link href="/blog/catalogue" className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-[#FFD700]/50">
+              <Link href="/blog/categorie/catalogue" className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-[#FFD700]/50">
                 <h3 className="font-semibold text-white mb-1">🎯 Catalogue</h3>
                 <p className="text-sm text-white/80">SEO & fiches produits</p>
               </Link>
-              <Link href="/blog/amazon-ads" className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-[#FFD700]/50">
+              <Link href="/blog/categorie/amazon-ads" className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-[#FFD700]/50">
                 <h3 className="font-semibold text-white mb-1">📊 Amazon Ads</h3>
                 <p className="text-sm text-white/80">Stratégies publicitaires</p>
               </Link>
-              <Link href="/blog/conformite" className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-[#FFD700]/50">
+              <Link href="/blog/categorie/conformite" className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-[#FFD700]/50">
                 <h3 className="font-semibold text-white mb-1">✅ Conformité</h3>
                 <p className="text-sm text-white/80">Règles & réglementations</p>
               </Link>
-              <Link href="/blog/logistique-fba" className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-[#FFD700]/50">
+              <Link href="/blog/categorie/logistique-fba" className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-[#FFD700]/50">
                 <h3 className="font-semibold text-white mb-1">📦 Logistique FBA</h3>
                 <p className="text-sm text-white/80">Gestion stocks & expéditions</p>
               </Link>

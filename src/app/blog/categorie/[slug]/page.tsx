@@ -83,13 +83,13 @@ interface Post {
 
 interface Props {
   params: Promise<{
-    category: string;
+    slug: string;
   }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { category } = await params;
-  const categoryData = CATEGORIES[category as CategorySlug];
+  const { slug } = await params;
+  const categoryData = CATEGORIES[slug as CategorySlug];
 
   if (!categoryData) {
     return { title: 'Catégorie non trouvée' };
@@ -104,8 +104,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export const revalidate = 60;
 
 export default async function CategoryPage({ params }: Props) {
-  const { category } = await params;
-  const categoryData = CATEGORIES[category as CategorySlug];
+  const { slug } = await params;
+  const categoryData = CATEGORIES[slug as CategorySlug];
 
   if (!categoryData) {
     notFound();
