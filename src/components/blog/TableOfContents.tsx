@@ -22,11 +22,15 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Ajuster pour le header fixe (si nécessaire)
-      setTimeout(() => {
-        window.scrollBy({ top: -80, behavior: 'smooth' });
-      }, 100);
+      // Calculer la position avec offset pour le header
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - 100;
+
+      // Scroll direct vers la position calculée
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
