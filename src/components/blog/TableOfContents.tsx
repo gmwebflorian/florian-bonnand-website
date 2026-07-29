@@ -1,45 +1,32 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-interface TocItem {
+interface Heading {
   id: string;
   text: string;
-  level: number;
 }
 
-export function TableOfContents({ content }: { content: string }) {
+interface TableOfContentsProps {
+  headings: Heading[];
+}
+
+export function TableOfContents({ headings }: TableOfContentsProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [tocItems, setTocItems] = useState<TocItem[]>([]);
 
-  useEffect(() => {
-    // Extraire uniquement les titres H2 du contenu HTML
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(content, 'text/html');
-    const headings = doc.querySelectorAll('h2');
-
-    const items: TocItem[] = Array.from(headings).map((heading) => {
-      const text = heading.textContent || '';
-      const level = parseInt(heading.tagName.substring(1));
-      // Récupérer l'ID qui a déjà été ajouté côté serveur
-      const id = heading.id || '';
-
-      return { id, text, level };
-    });
-
-    setTocItems(items);
-  }, [content]);
-
-  if (tocItems.length === 0) {
+  if (headings.length === 0) {
     return null;
   }
 
-  const handleClick = (id: string) => {
+  const handleClick = (id: string, e: React.MouseEvent) => {
+    e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       // Ajuster pour le header fixe (si nécessaire)
-      window.scrollBy(0, -80);
+      setTimeout(() => {
+        window.scrollBy({ top: -80, behavior: 'smooth' });
+      }, 100);
     }
   };
 
@@ -58,7 +45,7 @@ export function TableOfContents({ content }: { content: string }) {
             📑 Sommaire de l'article
           </h2>
           <span className="text-sm text-slate-500">
-            ({tocItems.length} {tocItems.length > 1 ? 'sections' : 'section'})
+            ({headings.length} {headings.length > 1 ? 'sections' : 'section'})
           </span>
         </div>
 
@@ -81,10 +68,10 @@ export function TableOfContents({ content }: { content: string }) {
       >
         <nav className="px-5 pb-5">
           <ul className="space-y-2">
-            {tocItems.map((item, index) => (
+            {headings.map((heading, index) => (
               <li key={index}>
                 <button
-                  onClick={() => handleClick(item.id)}
+                  onClick={(e) => handleClick(heading.id, e)}
                   className="w-full text-left py-2 px-3 rounded-lg transition-all duration-200
                     hover:bg-blue-50 hover:text-blue-700 hover:translate-x-1
                     flex items-start gap-2 group font-semibold text-slate-800"
@@ -92,7 +79,7 @@ export function TableOfContents({ content }: { content: string }) {
                   <span className="text-blue-500 group-hover:text-blue-700 flex-shrink-0 mt-0.5">
                     ▸
                   </span>
-                  <span className="flex-1">{item.text}</span>
+                  <span className="flex-1">{heading.text}</span>
                 </button>
               </li>
             ))}
