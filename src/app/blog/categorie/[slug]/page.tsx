@@ -124,10 +124,10 @@ export default async function CategoryPage({ params }: Props) {
     <>
       <Header />
 
-      <main className="relative min-h-screen py-20">
+      <main className="relative min-h-screen py-20 overflow-x-hidden">
         <div className="absolute inset-0 ocean-gradient opacity-95" />
 
-        <div className="relative z-10 container mx-auto px-4">
+        <div className="relative z-10 container mx-auto px-4 max-w-full">
           <div className="max-w-4xl mx-auto mb-16">
             <Link
               href="/blog"
