@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { ArticleCTA } from '@/components/blog/ArticleCTA';
 import { TableOfContents } from '@/components/blog/TableOfContents';
+import { addHeadingIds } from '@/lib/addHeadingIds';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import '@/styles/blog-content.css';
@@ -183,6 +184,9 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  // Ajouter les IDs aux titres H2 pour les ancres du sommaire
+  const contentWithIds = addHeadingIds(post.content);
+
   // Structured Data pour l'article
   const articleStructuredData = {
     "@context": "https://schema.org",
@@ -303,13 +307,13 @@ export default async function BlogPostPage({ params }: Props) {
             </header>
 
             {/* Sommaire de l'article */}
-            <TableOfContents content={post.content} />
+            <TableOfContents content={contentWithIds} />
 
             {/* Contenu de l'article avec effet vitré */}
             <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 md:p-12 border border-white/20">
               <div
                 className="blog-content"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ __html: contentWithIds }}
               />
             </div>
 

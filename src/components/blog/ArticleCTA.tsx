@@ -10,7 +10,7 @@ export function ArticleCTA() {
           <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] p-1.5 shadow-2xl">
             <div className="w-full h-full rounded-full overflow-hidden bg-white">
               <Image
-                src="/images/Expert Amazon Marketplace.webp"
+                src="/images/florian-bonnand-profile.png"
                 alt="Florian Bonnand - Consultant Amazon"
                 width={128}
                 height={128}

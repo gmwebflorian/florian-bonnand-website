@@ -18,35 +18,16 @@ export function TableOfContents({ content }: { content: string }) {
     const doc = parser.parseFromString(content, 'text/html');
     const headings = doc.querySelectorAll('h2');
 
-    const items: TocItem[] = Array.from(headings).map((heading, index) => {
+    const items: TocItem[] = Array.from(headings).map((heading) => {
       const text = heading.textContent || '';
       const level = parseInt(heading.tagName.substring(1));
+      // Récupérer l'ID qui a déjà été ajouté côté serveur
+      const id = heading.id || '';
 
-      // Créer un ID slugifié pour l'ancre
-      const id = `heading-${index}-${text
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[̀-ͯ]/g, '')
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)/g, '')}`;
-
-      // Ajouter l'ID au heading dans le DOM réel (sera fait côté client)
       return { id, text, level };
     });
 
     setTocItems(items);
-
-    // Ajouter les IDs aux vrais headings H2 dans le DOM
-    if (typeof window !== 'undefined') {
-      setTimeout(() => {
-        const realHeadings = document.querySelectorAll('.blog-content h2');
-        realHeadings.forEach((heading, index) => {
-          if (items[index]) {
-            heading.id = items[index].id;
-          }
-        });
-      }, 100);
-    }
   }, [content]);
 
   if (tocItems.length === 0) {
