@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { ArticleCTA } from '@/components/blog/ArticleCTA';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import '@/styles/blog-content.css';
@@ -307,6 +308,9 @@ export default async function BlogPostPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </div>
+
+            {/* CTA Audit gratuit */}
+            <ArticleCTA />
 
             <div className="mt-12 pt-8 border-t border-white/20">
               <Link
