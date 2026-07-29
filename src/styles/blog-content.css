@@ -216,7 +216,7 @@
 }
 
 .blog-content .personal-experience::before {
-  content: "📖 Vécu de consultant";
+  content: "📖 Vécu de consultant Amazon";
   display: block;
   font-size: 1rem;
   font-weight: 700;
