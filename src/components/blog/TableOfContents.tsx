@@ -13,10 +13,10 @@ export function TableOfContents({ content }: { content: string }) {
   const [tocItems, setTocItems] = useState<TocItem[]>([]);
 
   useEffect(() => {
-    // Extraire les titres H2 et H3 du contenu HTML
+    // Extraire uniquement les titres H2 du contenu HTML
     const parser = new DOMParser();
     const doc = parser.parseFromString(content, 'text/html');
-    const headings = doc.querySelectorAll('h2, h3');
+    const headings = doc.querySelectorAll('h2');
 
     const items: TocItem[] = Array.from(headings).map((heading, index) => {
       const text = heading.textContent || '';
@@ -36,10 +36,10 @@ export function TableOfContents({ content }: { content: string }) {
 
     setTocItems(items);
 
-    // Ajouter les IDs aux vrais headings dans le DOM
+    // Ajouter les IDs aux vrais headings H2 dans le DOM
     if (typeof window !== 'undefined') {
       setTimeout(() => {
-        const realHeadings = document.querySelectorAll('.blog-content h2, .blog-content h3');
+        const realHeadings = document.querySelectorAll('.blog-content h2');
         realHeadings.forEach((heading, index) => {
           if (items[index]) {
             heading.id = items[index].id;
@@ -101,21 +101,15 @@ export function TableOfContents({ content }: { content: string }) {
         <nav className="px-5 pb-5">
           <ul className="space-y-2">
             {tocItems.map((item, index) => (
-              <li
-                key={index}
-                className={item.level === 3 ? 'ml-4' : ''}
-              >
+              <li key={index}>
                 <button
                   onClick={() => handleClick(item.id)}
-                  className={`
-                    w-full text-left py-2 px-3 rounded-lg transition-all duration-200
+                  className="w-full text-left py-2 px-3 rounded-lg transition-all duration-200
                     hover:bg-blue-50 hover:text-blue-700 hover:translate-x-1
-                    flex items-start gap-2 group
-                    ${item.level === 2 ? 'font-semibold text-slate-800' : 'text-slate-600 text-sm'}
-                  `}
+                    flex items-start gap-2 group font-semibold text-slate-800"
                 >
                   <span className="text-blue-500 group-hover:text-blue-700 flex-shrink-0 mt-0.5">
-                    {item.level === 2 ? '▸' : '•'}
+                    ▸
                   </span>
                   <span className="flex-1">{item.text}</span>
                 </button>

@@ -10,7 +10,7 @@ export function ArticleCTA() {
           <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] p-1.5 shadow-2xl">
             <div className="w-full h-full rounded-full overflow-hidden bg-white">
               <Image
-                src="/images/florian-bonnand-profile.png"
+                src="/images/Expert Amazon Marketplace.webp"
                 alt="Florian Bonnand - Consultant Amazon"
                 width={128}
                 height={128}
@@ -54,7 +54,7 @@ export function ArticleCTA() {
 
       {/* Bouton CTA */}
       <Link
-        href="/contact"
+        href="https://florian-bonnand.eu/#contact"
         className="inline-block w-full md:w-auto bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFA500] hover:to-[#FF8C00] text-blue-900 font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-center"
       >
         🚀 Demander mon audit gratuit
