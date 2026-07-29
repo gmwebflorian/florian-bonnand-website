@@ -1,10 +1,28 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function ArticleCTA() {
   return (
-    <div className="my-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 md:p-10 shadow-2xl border border-blue-500/30">
+    <div className="my-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 md:p-10 shadow-2xl border border-blue-500/30 relative">
+      {/* Photo de profil en pastille */}
+      <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 md:left-8 md:translate-x-0">
+        <div className="relative">
+          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] p-1 shadow-2xl">
+            <div className="w-full h-full rounded-full overflow-hidden bg-white">
+              <Image
+                src="/images/Expert Amazon Marketplace.webp"
+                alt="Florian Bonnand - Consultant Amazon"
+                width={96}
+                height={96}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Badge "Offre gratuite" */}
-      <div className="inline-block bg-[#FFD700] text-blue-900 px-4 py-1.5 rounded-full text-sm font-bold mb-6">
+      <div className="inline-block bg-[#FFD700] text-blue-900 px-4 py-1.5 rounded-full text-sm font-bold mb-6 mt-8 md:mt-0">
         🎁 OFFRE GRATUITE
       </div>
 
