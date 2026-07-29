@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import '@/styles/blog-content.css';
 
 const GET_POST_BY_SLUG = gql`
   query GetPostBySlug($slug: ID!) {
@@ -302,30 +303,7 @@ export default async function BlogPostPage({ params }: Props) {
             {/* Contenu de l'article avec effet vitré */}
             <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 md:p-12 border border-white/20">
               <div
-                className="prose prose-lg max-w-none
-                  prose-headings:font-bold prose-headings:text-slate-900 prose-headings:mb-4 prose-headings:mt-8
-                  prose-h2:text-3xl prose-h2:border-b prose-h2:border-slate-200 prose-h2:pb-3 prose-h2:mt-12 prose-h2:mb-6
-                  prose-h3:text-2xl prose-h3:text-blue-900 prose-h3:mt-8 prose-h3:mb-4
-                  prose-h4:text-xl prose-h4:text-slate-800 prose-h4:mt-6 prose-h4:mb-3
-                  prose-p:text-slate-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
-                  prose-a:text-blue-600 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline hover:prose-a:text-blue-800
-                  prose-strong:text-slate-900 prose-strong:font-bold
-                  prose-em:text-slate-800 prose-em:italic
-                  prose-ul:my-6 prose-ul:space-y-2 prose-ul:text-slate-700
-                  prose-ol:my-6 prose-ol:space-y-2 prose-ol:text-slate-700
-                  prose-li:text-slate-700 prose-li:leading-relaxed prose-li:text-lg
-                  prose-li::marker:text-blue-600 prose-li::marker:font-bold
-                  prose-blockquote:border-l-4 prose-blockquote:border-[#FFD700] prose-blockquote:bg-blue-50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:italic prose-blockquote:text-slate-700 prose-blockquote:my-8
-                  prose-code:text-blue-700 prose-code:bg-blue-50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:text-base prose-code:before:content-[''] prose-code:after:content-['']
-                  prose-pre:bg-slate-900 prose-pre:text-slate-100 prose-pre:p-6 prose-pre:rounded-xl prose-pre:my-8 prose-pre:overflow-x-auto prose-pre:shadow-lg
-                  prose-img:rounded-xl prose-img:shadow-xl prose-img:my-8 prose-img:border prose-img:border-slate-200
-                  prose-table:border-collapse prose-table:my-8 prose-table:w-full
-                  prose-thead:bg-blue-600 prose-thead:text-white
-                  prose-th:p-4 prose-th:text-left prose-th:font-bold
-                  prose-td:p-4 prose-td:border prose-td:border-slate-200
-                  prose-tr:even:bg-slate-50
-                  prose-hr:my-12 prose-hr:border-slate-300
-                "
+                className="blog-content"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </div>
