@@ -43,6 +43,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
+  // Pages de catégories
+  const categoryPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/blog/categorie/catalogue`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/categorie/amazon-ads`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/categorie/conformite`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/categorie/logistique-fba`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+  ]
+
   // Récupérer les articles de blog dynamiquement
   try {
     const client = createApolloClient()
@@ -58,12 +86,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.modified),
       changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      priority: 0.6,
     }))
 
-    return [...staticPages, ...blogPosts]
+    return [...staticPages, ...categoryPages, ...blogPosts]
   } catch (error) {
     console.error('Error fetching blog posts for sitemap:', error)
-    return staticPages
+    return [...staticPages, ...categoryPages]
   }
 }
