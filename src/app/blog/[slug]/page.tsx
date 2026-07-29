@@ -6,6 +6,7 @@ import Script from 'next/script';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { ArticleCTA } from '@/components/blog/ArticleCTA';
+import { TableOfContents } from '@/components/blog/TableOfContents';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import '@/styles/blog-content.css';
@@ -300,6 +301,9 @@ export default async function BlogPostPage({ params }: Props) {
                 </div>
               </div>
             </header>
+
+            {/* Sommaire de l'article */}
+            <TableOfContents content={post.content} />
 
             {/* Contenu de l'article avec effet vitré */}
             <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 md:p-12 border border-white/20">
