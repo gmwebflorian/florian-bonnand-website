@@ -156,9 +156,8 @@
   border-top: 2px solid #cbd5e1;
 }
 
-/* Bloc expérience personnelle / conseil d'expert */
-.blog-content .expert-note,
-.blog-content .personal-experience {
+/* Bloc conseil d'expert (fond doré) */
+.blog-content .expert-note {
   background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
   border-left: 6px solid #fbbf24;
   padding: 1.5rem 2rem;
@@ -167,20 +166,41 @@
   box-shadow: 0 4px 6px rgba(251, 191, 36, 0.1);
 }
 
-.blog-content .expert-note p,
-.blog-content .personal-experience p {
+.blog-content .expert-note p {
   color: #78350f;
   margin-bottom: 0.5rem;
 }
 
-.blog-content .expert-note p:last-child,
+.blog-content .expert-note p:last-child {
+  margin-bottom: 0;
+}
+
+.blog-content .expert-note strong {
+  color: #92400e;
+  font-weight: 700;
+}
+
+/* Bloc expérience personnelle (fond bleu clair) */
+.blog-content .personal-experience {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-left: 6px solid #3b82f6;
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.1);
+}
+
+.blog-content .personal-experience p {
+  color: #1e3a8a;
+  margin-bottom: 0.5rem;
+}
+
 .blog-content .personal-experience p:last-child {
   margin-bottom: 0;
 }
 
-.blog-content .expert-note strong,
 .blog-content .personal-experience strong {
-  color: #92400e;
+  color: #1e40af;
   font-weight: 700;
 }
 
