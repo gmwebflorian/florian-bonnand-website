@@ -148,17 +148,6 @@ export default async function BlogPage() {
                   key={post.id}
                   className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  {post.featuredImage && (
-                    <div className="relative h-56 w-full bg-slate-200">
-                      <Image
-                        src={post.featuredImage.node.sourceUrl}
-                        alt={post.featuredImage.node.altText || post.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
-
                   <div className="p-6">
                     <h3 className="text-2xl font-bold text-slate-900 mb-3">
                       <Link
