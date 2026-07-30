@@ -231,7 +231,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="absolute inset-0 ocean-gradient opacity-95" />
 
         <div className="relative z-10 container mx-auto px-4 max-w-full">
-          <article className="max-w-4xl mx-auto">
+          <article className="max-w-5xl mx-auto">
             <Link
               href="/blog"
               className="inline-flex items-center text-white hover:text-[#FFD700] mb-4 transition-colors"
