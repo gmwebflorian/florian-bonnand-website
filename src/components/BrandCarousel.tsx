@@ -88,6 +88,11 @@ const BrandCarousel = () => {
       logo: "/images/brands/pomeol.webp",
       logoBlue: "/images/brands/pomeol-blue.webp"
     },
+    {
+      name: "Miumlab",
+      logo: "/images/brands/miumlab.webp",
+      logoBlue: "/images/brands/miumlab-blue.webp"
+    },
   ];
 
   // On duplique les logos pour un défilement infini
@@ -158,7 +163,7 @@ const BrandCarousel = () => {
                 >
                   <div className="relative w-24 h-16 md:w-32 md:h-20">
                     <Image
-                      src={hoveredIndex === index ? brand.logo : brand.logoBlue}
+                      src={hoveredIndex === index ? brand.logoBlue : brand.logo}
                       alt={`Logo ${brand.name}`}
                       fill
                       className="object-contain transition-all duration-300"
