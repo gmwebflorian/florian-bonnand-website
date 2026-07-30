@@ -105,8 +105,13 @@ const BrandCarousel = () => {
     },
   ];
 
-  // Mélanger les marques une seule fois au montage du composant
-  const [brands] = useState(() => shuffleArray(baseBrands));
+  // État pour les marques mélangées
+  const [brands, setBrands] = useState<Brand[]>(baseBrands);
+
+  // Mélanger les marques une seule fois au montage (côté client uniquement)
+  useEffect(() => {
+    setBrands(shuffleArray(baseBrands));
+  }, []);
 
   // On duplique les logos pour un défilement infini
   const duplicatedBrands = [...brands, ...brands];
