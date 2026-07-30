@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   allowedDevOrigins: ["*.preview.same-app.com"],
+  async redirects() {
+    return [
+      {
+        source: '/blog/fiche-produit-amazon-checklist-optimiser-listings',
+        destination: '/blog/fiche-produit-amazon-checklist',
+        permanent: true, // 301 redirect
+      },
+    ];
+  },
   images: {
     domains: [
       "source.unsplash.com",
