@@ -271,7 +271,7 @@ export default async function BlogPostPage({ params }: Props) {
             </nav>
 
             {post.featuredImage && (
-              <div className="relative w-full h-[400px] rounded-lg overflow-hidden mb-8 shadow-2xl">
+              <div className="hidden md:block relative w-full h-[400px] rounded-lg overflow-hidden mb-8 shadow-2xl">
                 <Image
                   src={post.featuredImage.node.sourceUrl}
                   alt={post.featuredImage.node.altText || post.title}
@@ -284,7 +284,7 @@ export default async function BlogPostPage({ params }: Props) {
 
             {/* En-tête de l'article */}
             <header className="mb-8 bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
                 {post.title}
               </h1>
 
