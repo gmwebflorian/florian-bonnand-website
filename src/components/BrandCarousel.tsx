@@ -16,8 +16,18 @@ const BrandCarousel = () => {
   const animationFrameRef = useRef<number>();
   const isPausedRef = useRef(false);
 
+  // Fonction pour mélanger un tableau (Fisher-Yates shuffle)
+  const shuffleArray = <T,>(array: T[]): T[] => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   // Tes marques avec les deux versions de logos
-  const brands: Brand[] = [
+  const baseBrands: Brand[] = [
     { 
       name: "Pediakid", 
       logo: "/images/brands/pediakid.webp",
@@ -94,6 +104,9 @@ const BrandCarousel = () => {
       logoBlue: "/images/brands/miumlab-blue.webp"
     },
   ];
+
+  // Mélanger les marques une seule fois au montage du composant
+  const [brands] = useState(() => shuffleArray(baseBrands));
 
   // On duplique les logos pour un défilement infini
   const duplicatedBrands = [...brands, ...brands];
