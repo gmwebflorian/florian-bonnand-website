@@ -10,7 +10,7 @@ interface Brand {
 }
 
 const BrandCarousel = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredBrand, setHoveredBrand] = useState<string | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef(0);
   const animationFrameRef = useRef<number>();
@@ -146,13 +146,13 @@ const BrandCarousel = () => {
     };
   }, []);
 
-  const handleMouseEnter = (index: number) => {
-    setHoveredIndex(index);
+  const handleMouseEnter = (brandName: string) => {
+    setHoveredBrand(brandName);
     isPausedRef.current = true;
   };
 
   const handleMouseLeave = () => {
-    setHoveredIndex(null);
+    setHoveredBrand(null);
     isPausedRef.current = false;
   };
 
@@ -176,12 +176,12 @@ const BrandCarousel = () => {
                 <div
                   key={`${brand.name}-${index}`}
                   className="flex-shrink-0 flex items-center justify-center transition-transform duration-300 hover:scale-110"
-                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseEnter={() => handleMouseEnter(brand.name)}
                   onMouseLeave={handleMouseLeave}
                 >
                   <div className="relative w-24 h-16 md:w-32 md:h-20">
                     <Image
-                      src={hoveredIndex === index ? brand.logo : brand.logoBlue}
+                      src={hoveredBrand === brand.name ? brand.logo : brand.logoBlue}
                       alt={`Logo ${brand.name}`}
                       fill
                       className="object-contain transition-all duration-300"
