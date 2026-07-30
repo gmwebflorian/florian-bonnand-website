@@ -163,7 +163,7 @@ const BrandCarousel = () => {
                 >
                   <div className="relative w-24 h-16 md:w-32 md:h-20">
                     <Image
-                      src={hoveredIndex === index ? brand.logoBlue : brand.logo}
+                      src={hoveredIndex === index ? brand.logo : brand.logoBlue}
                       alt={`Logo ${brand.name}`}
                       fill
                       className="object-contain transition-all duration-300"
