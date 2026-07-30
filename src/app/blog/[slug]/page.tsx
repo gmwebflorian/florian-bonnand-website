@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { ArticleCTA } from '@/components/blog/ArticleCTA';
 import { TableOfContents } from '@/components/blog/TableOfContents';
+import { ScrollToTop } from '@/components/blog/ScrollToTop';
 import { addHeadingIds } from '@/lib/addHeadingIds';
 import { extractHeadings } from '@/lib/extractHeadings';
 import { notFound } from 'next/navigation';
@@ -337,6 +338,7 @@ export default async function BlogPostPage({ params }: Props) {
       </main>
 
       <Footer />
+      <ScrollToTop />
     </>
   );
 }
