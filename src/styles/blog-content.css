@@ -148,10 +148,12 @@
   height: auto;
 }
 
+/* Conteneur scrollable pour tableaux */
 .blog-content table {
   width: 100%;
   border-collapse: collapse;
   margin: 2rem 0;
+  font-size: 1rem;
 }
 
 .blog-content thead {
@@ -172,6 +174,37 @@
 
 .blog-content tr:nth-child(even) {
   background-color: #f8fafc;
+}
+
+/* Responsive mobile : réduire les paddings et permettre le scroll */
+@media (max-width: 768px) {
+  .blog-content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.875rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    width: calc(100% + 2rem);
+  }
+
+  .blog-content thead,
+  .blog-content tbody,
+  .blog-content tr {
+    display: table;
+    width: 100%;
+    table-layout: auto;
+  }
+
+  .blog-content th,
+  .blog-content td {
+    padding: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .blog-content th {
+    font-size: 0.8rem;
+  }
 }
 
 .blog-content hr {
