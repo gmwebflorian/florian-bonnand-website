@@ -91,7 +91,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return [...staticPages, ...categoryPages]
     }
 
-    const blogPosts: MetadataRoute.Sitemap = data.posts.nodes.map((post) => ({
+    const blogPosts: MetadataRoute.Sitemap = data.posts.nodes.map((post: PostNode) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.modified),
       changeFrequency: 'monthly' as const,
