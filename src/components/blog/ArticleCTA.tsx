@@ -1,7 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export function ArticleCTA() {
+interface ArticleCTAProps {
+  category?: string;
+}
+
+export function ArticleCTA({ category }: ArticleCTAProps) {
+  // Déterminer si c'est un article Amazon Ads
+  const isAmazonAds = category === 'Amazon Ads';
+
   return (
     <div className="my-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 md:p-10 shadow-2xl border border-blue-500/30 relative">
       {/* Photo de profil en pastille - positionnée à droite */}
@@ -26,30 +33,55 @@ export function ArticleCTA() {
         🎁 OFFRE GRATUITE
       </div>
 
-      {/* Titre principal */}
+      {/* Titre principal - varie selon la catégorie */}
       <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
-        Votre fiche produit est-elle optimisée à 100% ?
+        {isAmazonAds
+          ? 'Vos campagnes Amazon Ads sont-elles bien optimisées à 100% ?'
+          : 'Votre fiche produit est-elle optimisée à 100% ?'
+        }
       </h3>
 
-      {/* Sous-titre */}
+      {/* Sous-titre - varie selon la catégorie */}
       <p className="text-lg text-white/90 mb-6">
-        Je vous offre un <strong className="text-[#FFD700]">audit gratuit</strong> de votre listing Amazon :
+        {isAmazonAds
+          ? <>Je vous offre un <strong className="text-[#FFD700]">audit gratuit</strong> de votre console publicitaire Amazon :</>
+          : <>Je vous offre un <strong className="text-[#FFD700]">audit gratuit</strong> de votre listing Amazon :</>
+        }
       </p>
 
-      {/* Liste des bénéfices */}
+      {/* Liste des bénéfices - varie selon la catégorie */}
       <ul className="space-y-3 mb-8">
-        <li className="flex items-start text-white/95">
-          <svg className="w-6 h-6 text-[#FFD700] mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-          </svg>
-          <span><strong className="text-white font-semibold">Analyse du produit de votre choix</strong> – diagnostic complet</span>
-        </li>
-        <li className="flex items-start text-white/95">
-          <svg className="w-6 h-6 text-[#FFD700] mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-          </svg>
-          <span><strong className="text-white font-semibold">Points d'amélioration prioritaires</strong> – actions concrètes</span>
-        </li>
+        {isAmazonAds ? (
+          <>
+            <li className="flex items-start text-white/95">
+              <svg className="w-6 h-6 text-[#FFD700] mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong className="text-white font-semibold">Analyse de vos campagnes</strong></span>
+            </li>
+            <li className="flex items-start text-white/95">
+              <svg className="w-6 h-6 text-[#FFD700] mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong className="text-white font-semibold">Points d'amélioration prioritaires</strong> – actions concrètes actionnables</span>
+            </li>
+          </>
+        ) : (
+          <>
+            <li className="flex items-start text-white/95">
+              <svg className="w-6 h-6 text-[#FFD700] mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong className="text-white font-semibold">Analyse du produit de votre choix</strong> – diagnostic complet</span>
+            </li>
+            <li className="flex items-start text-white/95">
+              <svg className="w-6 h-6 text-[#FFD700] mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong className="text-white font-semibold">Points d'amélioration prioritaires</strong> – actions concrètes</span>
+            </li>
+          </>
+        )}
       </ul>
 
       {/* Bouton CTA */}

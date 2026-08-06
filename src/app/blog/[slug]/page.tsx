@@ -28,6 +28,11 @@ const GET_POST_BY_SLUG = gql`
           name
         }
       }
+      categories {
+        nodes {
+          name
+        }
+      }
       featuredImage {
         node {
           sourceUrl
@@ -49,6 +54,11 @@ interface Post {
     node: {
       name: string;
     };
+  };
+  categories?: {
+    nodes: Array<{
+      name: string;
+    }>;
   };
   featuredImage?: {
     node: {
@@ -323,7 +333,9 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
 
             {/* CTA Audit gratuit */}
-            <ArticleCTA />
+            <ArticleCTA
+              category={post.categories?.nodes?.[0]?.name}
+            />
 
             <div className="mt-12 pt-8 border-t border-white/20">
               <Link
