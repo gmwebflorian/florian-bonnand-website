@@ -60,8 +60,9 @@
 .blog-content ul,
 .blog-content ol {
   margin: 1.5rem 0;
-  padding-left: 1.5rem;
+  padding-left: 0;
   color: #475569;
+  list-style: none;
 }
 
 .blog-content ul li,
@@ -69,14 +70,33 @@
   font-size: 1.125rem;
   line-height: 1.75;
   margin-bottom: 0.5rem;
+  padding-left: 2rem;
+  position: relative;
 }
 
-.blog-content ul li::marker {
+/* Icône personnalisée pour les listes à puces */
+.blog-content ul li::before {
+  content: "⚓";
+  position: absolute;
+  left: 0;
   color: #2563eb;
+  font-size: 1rem;
   font-weight: 700;
 }
 
-.blog-content ol li::marker {
+/* Numéros pour les listes ordonnées */
+.blog-content ol {
+  counter-reset: item;
+}
+
+.blog-content ol li {
+  counter-increment: item;
+}
+
+.blog-content ol li::before {
+  content: counter(item) ".";
+  position: absolute;
+  left: 0;
   color: #2563eb;
   font-weight: 700;
 }
