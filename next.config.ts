@@ -6,7 +6,23 @@ const nextConfig = {
       {
         source: '/blog/fiche-produit-amazon-checklist-optimiser-listings',
         destination: '/blog/fiche-produit-amazon-checklist',
-        permanent: true, // 301 redirect
+        permanent: true,
+      },
+      // Redirections des anciens sitemaps WordPress vers le nouveau sitemap Next.js
+      {
+        source: '/sitemap_index.xml',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
+      {
+        source: '/post-sitemap.xml',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
+      {
+        source: '/page-sitemap.xml',
+        destination: '/sitemap.xml',
+        permanent: true,
       },
     ];
   },
