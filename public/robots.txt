@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://florian-bonnand.eu/sitemap.xml
+Sitemap: https://florian-bonnand.eu/sitemap-static.xml
 
 # Optimisation crawl
 Crawl-delay: 1
