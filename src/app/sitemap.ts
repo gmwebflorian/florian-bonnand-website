@@ -75,18 +75,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const client = createApolloClient()
 
-    // Timeout de 5 secondes pour éviter de bloquer le sitemap
-    const timeoutPromise = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error('GraphQL timeout')), 5000)
+    // Timeout de 3 secondes pour éviter de bloquer le sitemap (Google timeout)
+    const timeoutPromise = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('GraphQL timeout')), 3000)
     )
 
     const queryPromise = client.query<PostsData>({
       query: GET_ALL_POSTS,
     })
 
-    const { data } = await Promise.race([queryPromise, timeoutPromise]) as any
+    const { data } = await Promise.race([queryPromise, timeoutPromise])
 
-    if (!data || !data.posts || !data.posts.nodes) {
+    if (!data?.posts?.nodes || data.posts.nodes.length === 0) {
       console.warn('No blog posts found, returning static pages only')
       return [...staticPages, ...categoryPages]
     }
@@ -101,7 +101,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return [...staticPages, ...categoryPages, ...blogPosts]
   } catch (error) {
     console.error('Error fetching blog posts for sitemap:', error)
-    // Retourner au minimum les pages statiques et catégories
+    // TOUJOURS retourner un sitemap valide, même en cas d'erreur
     return [...staticPages, ...categoryPages]
   }
 }
