@@ -1,7 +1,6 @@
 import createApolloClient from '@/lib/apollo-client';
 import { gql } from '@apollo/client';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const GET_LATEST_POST = gql`
   query GetLatestPost {
@@ -84,57 +83,42 @@ export async function LatestBlogPost() {
           </h2>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-shadow duration-300">
-          <div className="grid md:grid-cols-2 gap-0">
-            {/* Image */}
-            {post.featuredImage && (
-              <div className="relative h-64 md:h-full min-h-[300px]">
-                <Image
-                  src={post.featuredImage.node.sourceUrl}
-                  alt={post.featuredImage.node.altText || post.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-shadow duration-300 max-w-3xl mx-auto">
+          <div className="p-8 md:p-12 text-center">
+            {post.categories?.nodes?.[0] && (
+              <span className="inline-block bg-[hsl(var(--ocean-primary))] text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+                {post.categories.nodes[0].name}
+              </span>
             )}
 
-            {/* Contenu */}
-            <div className="p-8 md:p-12 flex flex-col justify-center">
-              {post.categories?.nodes?.[0] && (
-                <span className="inline-block bg-[hsl(var(--ocean-primary))] text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-4 w-fit">
-                  {post.categories.nodes[0].name}
-                </span>
-              )}
+            <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--ocean-deep))] mb-4 leading-tight">
+              {post.title}
+            </h3>
 
-              <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--ocean-deep))] mb-4 leading-tight">
-                {post.title}
-              </h3>
+            <div
+              className="text-gray-600 mb-6 line-clamp-3"
+              dangerouslySetInnerHTML={{ __html: post.excerpt }}
+            />
 
-              <div
-                className="text-gray-600 mb-6 line-clamp-3"
-                dangerouslySetInnerHTML={{ __html: post.excerpt }}
-              />
-
-              <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
-                <time dateTime={post.date}>
-                  {new Date(post.date).toLocaleDateString('fr-FR', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </time>
-              </div>
-
-              <Link
-                href={`/blog/${post.slug}`}
-                className="inline-flex items-center gap-2 bg-[hsl(var(--ocean-primary))] hover:bg-[hsl(var(--ocean-deep))] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 w-fit"
-              >
-                Lire l'article
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
+            <div className="flex items-center justify-center gap-4 text-sm text-gray-500 mb-6">
+              <time dateTime={post.date}>
+                {new Date(post.date).toLocaleDateString('fr-FR', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>
             </div>
+
+            <Link
+              href={`/blog/${post.slug}`}
+              className="inline-flex items-center gap-2 bg-[hsl(var(--ocean-primary))] hover:bg-[hsl(var(--ocean-deep))] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+            >
+              Lire l'article
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
 
