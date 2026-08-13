@@ -72,9 +72,9 @@ export function Footer() {
             <h3 className="font-bold text-lg mb-4 text-[hsl(var(--gold))]">Catégories</h3>
             <nav className="space-y-2">
               {[
-                { label: 'Catalogue', href: '/blog/categorie/catalogue' },
+                { label: 'Catalogue Amazon', href: '/blog/categorie/catalogue' },
                 { label: 'Amazon Ads', href: '/blog/categorie/amazon-ads' },
-                { label: 'Conformité', href: '/blog/categorie/conformite' },
+                { label: 'Conformité Amazon', href: '/blog/categorie/conformite' },
                 { label: 'Logistique FBA', href: '/blog/categorie/logistique-fba' },
               ].map((item) => (
                 <Link

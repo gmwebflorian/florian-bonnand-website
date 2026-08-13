@@ -6,6 +6,7 @@ import { About } from '@/components/sections/about';
 import { Expertises } from '@/components/sections/expertises';
 import { Method } from '@/components/sections/method';
 import { References } from '@/components/sections/references';
+import { LatestBlogPost } from '@/components/sections/latest-blog-post';
 import { Contact } from '@/components/sections/contact';
 
 export default function Home() {
@@ -63,6 +64,7 @@ export default function Home() {
         <Expertises />
         <Method />
         <References />
+        <LatestBlogPost />
         <Contact />
         <Footer />
       </main>
