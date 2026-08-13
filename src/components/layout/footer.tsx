@@ -28,7 +28,7 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid md:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -59,6 +59,27 @@ export function Footer() {
                   key={item.href}
                   href={`/${item.href}`}
                   onClick={(e) => handleSmoothScroll(e, item.href)}
+                  className="block text-white/70 hover:text-[hsl(var(--gold))] transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Blog Categories */}
+          <div>
+            <h3 className="font-bold text-lg mb-4 text-[hsl(var(--gold))]">Catégories</h3>
+            <nav className="space-y-2">
+              {[
+                { label: 'Catalogue', href: '/blog/categorie/catalogue' },
+                { label: 'Amazon Ads', href: '/blog/categorie/amazon-ads' },
+                { label: 'Conformité', href: '/blog/categorie/conformite' },
+                { label: 'Logistique FBA', href: '/blog/categorie/logistique-fba' },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
                   className="block text-white/70 hover:text-[hsl(var(--gold))] transition-colors"
                 >
                   {item.label}
