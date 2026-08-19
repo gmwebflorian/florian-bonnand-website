@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { CompassIcon } from '@/components/icons/maritime-icons';
 
 export function Contact() {
@@ -145,6 +146,17 @@ export function Contact() {
               <p className="text-sm text-gray-700 leading-relaxed">
                 <strong className="text-[hsl(var(--ocean-deep))]">Diagnostic gratuit :</strong> Je vous propose un premier échange de 30 minutes pour analyser votre situation actuelle sur Amazon et identifier vos axes d'amélioration prioritaires.
               </p>
+            </div>
+
+            {/* Badge Amazon Ads Certification */}
+            <div className="flex justify-center">
+              <Image
+                src="/images/Certification Amazon Ads.png"
+                alt="Amazon Ads Advanced Certification"
+                width={300}
+                height={180}
+                className="object-contain"
+              />
             </div>
           </div>
 
