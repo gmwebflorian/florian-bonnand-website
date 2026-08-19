@@ -28,7 +28,7 @@ interface Post {
 // ✅ BALISES SEO OPTIMISÉES pour "actualités Amazon"
 export const metadata: Metadata = {
   title: "Actualités Amazon Marketplace | News & Conseils Vendeurs Amazon",
-  description: "Suivez les dernières actualités Amazon marketplace : mises à jour vendeurs, nouveautés Amazon Ads, stratégies e-commerce et conseils d'expert pour optimiser vos ventes sur Amazon.",
+  description: "actualités Amazon marketplace : mises à jour vendeurs, nouveautés Amazon Ads, stratégies e-commerce et conseils d'expert pour optimiser vos ventes sur Amazon.",
   keywords: [
     "actualités Amazon",
     "actualités vendeurs Amazon",
