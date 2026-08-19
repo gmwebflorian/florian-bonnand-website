@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { CompassIcon } from '@/components/icons/maritime-icons';
 
 export function Contact() {
@@ -150,13 +151,20 @@ export function Contact() {
 
             {/* Badge Amazon Ads Certification */}
             <div className="flex justify-center mt-auto">
-              <Image
-                src="/images/Certification Amazon Ads.png"
-                alt="Amazon Ads Advanced Certification"
-                width={200}
-                height={120}
-                className="object-contain"
-              />
+              <a
+                href="https://advertising.amazon.com/API/ProfileCreativeServlet"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+              >
+                <Image
+                  src="/images/Certification Amazon Ads.png"
+                  alt="Amazon Ads Advanced Certification"
+                  width={200}
+                  height={120}
+                  className="object-contain"
+                />
+              </a>
             </div>
           </div>
 
