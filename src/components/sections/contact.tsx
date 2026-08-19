@@ -152,7 +152,7 @@ export function Contact() {
             {/* Badge Amazon Ads Certification */}
             <div className="flex justify-center mt-auto">
               <a
-                href="https://advertising.amazon.com/API/ProfileCreativeServlet"
+                href="https://advertising.amazon.com/academy/certificates/c4167497-b9c7-42ff-9675-8af9507d0d53"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:opacity-80 transition-opacity"
