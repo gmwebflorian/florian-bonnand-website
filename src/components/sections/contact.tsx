@@ -93,7 +93,7 @@ export function Contact() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="space-y-8">
+          <div className="flex flex-col gap-8">
             <div className="bg-gradient-to-br from-[hsl(var(--ocean-deep))] to-[hsl(var(--ocean-primary))] rounded-2xl p-8 text-white shadow-xl">
               <div className="mb-6">
                 <CompassIcon className="w-16 h-16 text-[hsl(var(--gold))]" />
@@ -149,12 +149,12 @@ export function Contact() {
             </div>
 
             {/* Badge Amazon Ads Certification */}
-            <div className="flex justify-center">
+            <div className="flex justify-center mt-auto">
               <Image
                 src="/images/Certification Amazon Ads.png"
                 alt="Amazon Ads Advanced Certification"
-                width={300}
-                height={180}
+                width={200}
+                height={120}
                 className="object-contain"
               />
             </div>
