@@ -128,18 +128,6 @@ export function Footer() {
               <span>Mentions légales</span>
             </div>
           </div>
-
-          {/* Link Meilleur du Web */}
-          <div className="mt-6 text-center">
-            <a
-              href="https://www.meilleurduweb.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/40 hover:text-white/60 text-xs transition-colors"
-            >
-              meilleur du web
-            </a>
-          </div>
         </div>
       </div>
     </footer>
