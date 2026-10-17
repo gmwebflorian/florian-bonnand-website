@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "google-search-console": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "search-console-mcp"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/home/user/.config/gsc-credentials.json"
+      }
+    }
+  }
+}
